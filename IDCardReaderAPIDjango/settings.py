@@ -24,8 +24,10 @@ SECRET_KEY = 'django-insecure-hklrj4!a^i@c3xl#)v7=5ra5_te3hve0^=y#322uaqz(i0pe%#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.4', '127.0.0.1']
 DATA_UPLOAD_MAX_NUMBER_FIELDS = None
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
 
     'client.apps.ClientConfig',
 ]
@@ -44,6 +47,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -52,6 +56,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'IDCardReaderAPIDjango.urls'
+
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:5500',
+]
 
 TEMPLATES = [
     {
